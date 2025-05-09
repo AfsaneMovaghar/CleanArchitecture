@@ -1,14 +1,21 @@
-﻿namespace Presentation.Controllers;
+﻿using Application.Common.Interface;
+using Application.DTO;
+using Microsoft.AspNetCore.Mvc;
 
-public class AuthenticationController : BaseController
+namespace Presentation.Controllers;
+
+public class AuthenticationController(IJwtTokenService jwtTokenService) : BaseController
 {
-    //[HttpPost]
-    //public async Task<ActionResult<Guid>> Register([FromBody] UserRegisterCommand userRegisterCommand,
-    //    CancellationToken cancellationToken  = default)
-    //   => await Mediator.Send(userRegisterCommand, cancellationToken);
+    private readonly IJwtTokenService _jwtTokenService = jwtTokenService;
+    [HttpPost("login")]
+    public IActionResult Login([FromBody] LoginDTO model)
+    {
+        if (model.Username == "admin" && model.Password == "123")
+        {
+            var token = _jwtTokenService.GenerateJwtToken(model.Username);
+            return Ok(new { token });
+        }
 
-    //[HttpPost]
-    //public async Task<ActionResult<UserDto>> Login([FromBody] LoginQuery loginQuery,
-    //    CancellationToken cancellationToken  = default)
-    //   => await Mediator.Send(loginQuery, cancellationToken);
+        return Unauthorized();
+    }
 }

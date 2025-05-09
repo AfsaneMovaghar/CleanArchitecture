@@ -1,4 +1,4 @@
-﻿namespace Infru.Configuration;
+﻿namespace Application.Common.Config;
 public class JwtSettings
 {
     public string Key { get; set; } = "";

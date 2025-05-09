@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using Application.Common.Interface;
+using Application.Services;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -15,7 +17,7 @@ public static class ConfigureServices
         //    cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         //});
 
-        //  services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddSingleton<IJwtTokenService, JwtTokenService>();
         return services;
     }
 }

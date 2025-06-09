@@ -24,6 +24,6 @@ public class UserConfig : IEntityTypeConfiguration<User>
             .HasMaxLength(50)
             .IsRequired();
 
-        //builder.ComplexProperty(x => x.Address);
+       //builder.ComplexProperty(x => x.Address);
     }
 }

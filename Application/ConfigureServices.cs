@@ -1,4 +1,7 @@
-﻿using FluentValidation;
+﻿using Application.Common;
+using Application.Common.Behaviours;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -9,13 +12,12 @@ public static class ConfigureServices
     public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
     {
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-        //services.AddMediatR(cfg =>
-        //{
-        //    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-        //    cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-        //});
-
-        //  services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+        });
+        services.AddAutoMapper(typeof(MappingProfile));
         return services;
     }
 }

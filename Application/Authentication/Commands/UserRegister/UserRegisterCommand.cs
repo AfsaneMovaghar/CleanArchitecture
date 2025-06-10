@@ -11,5 +11,5 @@ public record UserRegisterCommand(
      string UserName,
      string Password,
       string Address,
-Gender Gender
+    Gender Gender
 ) : IRequest<Result>;

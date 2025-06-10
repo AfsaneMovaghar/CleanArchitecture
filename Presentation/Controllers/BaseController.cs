@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Presentation.Controllers;
 
-[Route("[controller]/[action]"), CatchExceptionFilter, ApiController]
+[Route("api/[controller]/[action]"), CatchExceptionFilter, ApiController]
 public abstract class BaseController : ControllerBase
 {
     private ISender? _mediator;

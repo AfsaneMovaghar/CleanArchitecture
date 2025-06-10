@@ -12,16 +12,16 @@ public class AuthenticationCommandHandler(IApplicationUnitOfWork unitOfWork)
 
     public async Task<Result> Handle(UserRegisterCommand request, CancellationToken cancellationToken = default)
     {
-        var validator = new UserValidator();
-        var result = validator.Validate(request);
+        //var validator = new UserValidator();
+        //var result = validator.Validate(request);
 
-        if (!result.IsValid)
-        {
-            foreach (var error in result.Errors)
-            {
-                Console.WriteLine(error.ErrorMessage);
-            }
-        }
+        //if (!result.IsValid)
+        //{
+        //    foreach (var error in result.Errors)
+        //    {
+        //        Console.WriteLine(error.ErrorMessage);
+        //    }
+        //}
         var model = User.Create(
 
              request.Email,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { User, Gender } from '../../models/user.model';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +14,7 @@ export class UserFormComponent {
   errorMessage = '';
   userEntity=<User>{gender:Gender.Male};
   userId=0;
-//userForm:FormGroup;
+
   constructor(
    private fb: FormBuilder,
     private apiService: UserService,
@@ -24,12 +24,7 @@ export class UserFormComponent {
     this.route.paramMap.subscribe(params => {
       this.userId = Number(params.get('id'));
     });
-    // this.userForm = this.fb.group({
-    //   name: ['', [Validators.required, Validators.minLength(3)]],
-    //   email: ['', [Validators.required, Validators.email]],
-    //   phone: ['', [Validators.pattern(/^[0-9]{10,11}$/)]],
-    //   password: ['', [Validators.required, Validators.minLength(6)]]
-    // });
+   
     if(this.userId>0)
       this.getById();
    }
@@ -37,8 +32,7 @@ export class UserFormComponent {
 getById(){
 this.apiService.getUser(this.userId).subscribe({
   next: (response) => {
-    
-    this.userEntity=response.data;
+    this.userEntity= response.data;
   },
   error: (err) => {
     this.errorMessage = 'خطا در ثبت اطلاعات: ' + (err.error?.message || err.message);
@@ -50,7 +44,6 @@ this.apiService.getUser(this.userId).subscribe({
 }
 
   onSubmit() {
-    //if (this.userForm.invalid) return;
 
     this.isSubmitting = true;
     this.successMessage = '';

@@ -27,7 +27,11 @@ export class UserService {
     return this.http.post(this.apiUrl+"Register", userData, { headers });
   }
 
-  
+  // متد دریافت لیست کاربران
+  getUsers(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+
   getUser(id:number): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

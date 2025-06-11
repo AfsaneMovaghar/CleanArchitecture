@@ -2,4 +2,4 @@
 
 namespace Application.Users.Queries.GetUser;
 
-public record GetUserQuery(Guid Id) : IRequest<GetUserDto>;
+public record GetUserQuery(long Id) : IRequest<GetUserDto>;

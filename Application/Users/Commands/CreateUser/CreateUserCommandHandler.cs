@@ -5,11 +5,11 @@ using MediatR;
 namespace Application.Users.Commands.CreateUser;
 
 public class CreateUserCommandHandler(IApplicationUnitOfWork applicationUnitOfWork)
-    : IRequestHandler<CreateUserCommand, Guid>
+    : IRequestHandler<CreateUserCommand, long>
 {
     private readonly IApplicationUnitOfWork _uow = applicationUnitOfWork;
 
-    public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken = default)
+    public async Task<long> Handle(CreateUserCommand request, CancellationToken cancellationToken = default)
     {
         var user = new User
         {

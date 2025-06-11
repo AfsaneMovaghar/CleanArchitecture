@@ -2,7 +2,7 @@
 
 namespace Application.Users.Commands.CreateUser;
 
-public record CreateUserCommand : IRequest<Guid>
+public record CreateUserCommand : IRequest<long>
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

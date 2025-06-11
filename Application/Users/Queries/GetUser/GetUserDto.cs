@@ -2,4 +2,4 @@
 
 namespace Application.Users.Queries.GetUser;
 
-public record GetUserDto(Guid Id, Gender Gender, string Email);
+public record GetUserDto(long Id, Gender Gender, string Email);

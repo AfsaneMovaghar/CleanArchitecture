@@ -6,6 +6,5 @@ public record GetUserDto(long Id,string FirstName,
      string LastName,
      string Email,
      string UserName,
-     string Password,
       string Address,
     Gender Gender);

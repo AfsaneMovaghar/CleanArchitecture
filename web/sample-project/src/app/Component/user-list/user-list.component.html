@@ -5,22 +5,24 @@
     <div class="card-header bg-info text-white">
       <h5 class="mb-0">لیست کاربران</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body" >
       <table class="table table-striped">
         <thead>
           <tr>
             <th>#</th>
             <th>نام</th>
+            <th>نام خانوادگی</th>
             <th>ایمیل</th>
-            <th>شماره تماس</th>
+            <th>نام کاربری</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
+        <tbody >
+          <tr *ngFor="let user of users" >
             <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.phone }}</td>
+            <td>{{ user.userName }}</td>
           </tr>
         </tbody>
       </table>

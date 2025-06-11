@@ -32,7 +32,7 @@ export class UserFormComponent {
 getById(){
 this.apiService.getUser(this.userId).subscribe({
   next: (response) => {
-    this.userEntity= response.data;
+    this.userEntity= response;
   },
   error: (err) => {
     this.errorMessage = 'خطا در ثبت اطلاعات: ' + (err.error?.message || err.message);

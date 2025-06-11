@@ -14,7 +14,7 @@ public class GetUserQueryHandler(IApplicationUnitOfWork applicationUnitOfWork, I
     private readonly IMapper _mapper = mapper;
     public async Task<GetUserDto> Handle(GetUserQuery request, CancellationToken cancellationToken = default)
     {
-        var user = await _uow.Users
+        User? user = await _uow.Users
                                   .AsNoTracking()
                                   .Where(x => x.Id == request.Id)
                                   .FirstOrDefaultAsync(cancellationToken);
